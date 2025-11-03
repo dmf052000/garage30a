@@ -56,13 +56,13 @@ export default function EliteGarageClub() {
               
               {/* Desktop Navigation */}
               <div className="hidden lg:flex items-center space-x-12">
-                <a href="#experience" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Experience</a>
+                <a href="#location" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Location</a>
                 <a href="#spaces" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Spaces</a>
                 <a href="#community" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Community</a>
-                <a href="#location" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Location</a>
-                <button className="bg-white text-black px-8 py-3 text-sm font-medium hover:bg-white/90 transition-all duration-300">
-                  Schedule Tour
-                </button>
+                <a href="#experience" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Experience</a>
+                <a href="#availability" className="bg-white text-black px-8 py-3 text-sm font-medium hover:bg-white/90 transition-all duration-300 inline-block">
+                  Reserve Now
+                </a>
               </div>
 
               {/* Mobile Menu Button */}
@@ -80,13 +80,13 @@ export default function EliteGarageClub() {
             {isMenuOpen && (
               <div className="lg:hidden mt-6 pb-6 border-t border-white/10">
                 <div className="flex flex-col space-y-4 pt-6">
-                  <a href="#experience" className="text-sm font-light hover:text-white/60 transition-colors">Experience</a>
+                  <a href="#location" className="text-sm font-light hover:text-white/60 transition-colors">Location</a>
                   <a href="#spaces" className="text-sm font-light hover:text-white/60 transition-colors">Spaces</a>
                   <a href="#community" className="text-sm font-light hover:text-white/60 transition-colors">Community</a>
-                  <a href="#location" className="text-sm font-light hover:text-white/60 transition-colors">Location</a>
-                  <button className="bg-white text-black px-8 py-3 text-sm font-medium hover:bg-white/90 transition-all w-fit">
-                    Schedule Tour
-                  </button>
+                  <a href="#experience" className="text-sm font-light hover:text-white/60 transition-colors">Experience</a>
+                  <a href="#availability" className="bg-white text-black px-8 py-3 text-sm font-medium hover:bg-white/90 transition-all w-fit inline-block">
+                    Reserve Now
+                  </a>
                 </div>
               </div>
             )}
@@ -158,59 +158,31 @@ export default function EliteGarageClub() {
           </div>
         </section>
 
-        {/* Experience Section */}
-        <section id="experience" className="py-32 bg-black">
+        {/* Location Section */}
+        <section id="location" className="py-32 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-24">
-              <div className="inline-block px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/80 text-xs font-light tracking-widest uppercase mb-8">
-                What Sets Garage 30A Apart
+              <div className="inline-block px-6 py-2 bg-black/10 backdrop-blur-sm border border-black/20 rounded-full text-black/80 text-xs font-light tracking-widest uppercase mb-8">
+                Prime Location
               </div>
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">More Than Just a Place to Park</h2>
-              <p className="text-lg text-white/70 max-w-3xl mx-auto font-light leading-relaxed">
-                Garage 30A is a market leader of luxury garage condominium communities built for collectors and performance enthusiasts who want more than just storage. We offer secure, customized garage offices with deeded ownership and access to an exclusive community of like-minded individuals. It's a place to protect your investment, enjoy premium car storage, and connect with people who share your passion.
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Location</h2>
+              <p className="text-lg text-black/70 max-w-3xl mx-auto font-light leading-relaxed">
+                Tucked along highway 98 near Florida's iconic 30A corridor, this exclusive community offers the perfect location for your luxury garage office.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-16">
-              {[
-                {
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                  ),
-                  title: 'Secure, Customized Garage Condos',
-                  description: 'Individually owned units with deeded ownership and full customization options to reflect your lifestyle.'
-                },
-                {
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  ),
-                  title: 'Exclusive Shared Amenities',
-                  description: 'Access to spacious gathering areas and a members-only clubhouse where community starts.'
-                },
-                {
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  title: 'Long-Term Value & Belonging',
-                  description: 'With 24/7 gated access, wide drive aisles, and year-round convenience, Garage 30A delivers peace of mind and a true sense of belonging.'
-                }
-              ].map((feature, index) => (
-                <div key={index} className="group text-center">
-                  <div className="w-16 h-16 mx-auto mb-8 flex items-center justify-center border border-white/20 rounded-full group-hover:border-white/40 transition-all duration-300">
-                    <div className="text-white/80 group-hover:text-white transition-colors duration-300">
-                      {feature.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-light mb-6 text-white">{feature.title}</h3>
-                  <p className="text-white/60 leading-relaxed font-light">{feature.description}</p>
-                </div>
-              ))}
+            {/* Google Maps Embed */}
+            <div className="aspect-[21/9] rounded-3xl overflow-hidden relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47149.43145606431!2d-86.09566864174735!3d30.31679682429975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8893e5f5121632f9%3A0x421d5796fc0b6135!2s5283%20US-98%2C%20Santa%20Rosa%20Beach%2C%20FL%2032459!5e0!3m2!1sen!2sus!4v1762146064800!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full"
+              ></iframe>
             </div>
           </div>
         </section>
@@ -454,44 +426,59 @@ export default function EliteGarageClub() {
           </div>
         </section>
 
-        {/* Location Section */}
-        <section id="location" className="py-32 bg-white">
+        {/* Experience Section */}
+        <section id="experience" className="py-32 bg-black">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-24">
-              <div className="inline-block px-6 py-2 bg-black/10 backdrop-blur-sm border border-black/20 rounded-full text-black/80 text-xs font-light tracking-widest uppercase mb-8">
-                Prime Location
+              <div className="inline-block px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/80 text-xs font-light tracking-widest uppercase mb-8">
+                What Sets Garage 30A Apart
               </div>
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Location...Location...Location</h2>
-              <p className="text-lg text-black/70 max-w-3xl mx-auto font-light leading-relaxed">
-                Tucked along highway 98 near Florida's iconic 30A corridor, this exclusive community offers the perfect location for your luxury garage office.
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">More Than Just a Place to Park</h2>
+              <p className="text-lg text-white/70 max-w-3xl mx-auto font-light leading-relaxed">
+                Garage 30A is a market leader of luxury garage condominium communities built for collectors and performance enthusiasts who want more than just storage. We offer secure, customized garage offices with deeded ownership and access to an exclusive community of like-minded individuals. It's a place to protect your investment, enjoy premium car storage, and connect with people who share your passion.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-12 mb-20">
+            <div className="grid md:grid-cols-3 gap-16">
               {[
-                { icon: '🏖️', title: 'Minutes to 30A Beaches', description: 'Pristine white sand beaches' },
-                { icon: '🍽️', title: 'Fine Dining', description: 'Michelin-quality restaurants nearby' },
-                { icon: '✈️', title: 'Easy Airport Access', description: 'Private aviation facilities' }
-              ].map((item, index) => (
-                <div key={index} className="text-center p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-all duration-300">
-                  <div className="text-6xl mb-6">{item.icon}</div>
-                  <h3 className="text-2xl font-light mb-4 text-black">{item.title}</h3>
-                  <p className="text-black/60 font-light">{item.description}</p>
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  ),
+                  title: 'Secure, Customized Garage Condos',
+                  description: 'Individually owned units with deeded ownership and full customization options to reflect your lifestyle.'
+                },
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  ),
+                  title: 'Exclusive Shared Amenities',
+                  description: 'Access to spacious gathering areas and a members-only clubhouse where community starts.'
+                },
+                {
+                  icon: (
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  ),
+                  title: 'Long-Term Value & Belonging',
+                  description: 'With 24/7 gated access, wide drive aisles, and year-round convenience, Garage 30A delivers peace of mind and a true sense of belonging.'
+                }
+              ].map((feature, index) => (
+                <div key={index} className="group text-center">
+                  <div className="w-16 h-16 mx-auto mb-8 flex items-center justify-center border border-white/20 rounded-full group-hover:border-white/40 transition-all duration-300">
+                    <div className="text-white/80 group-hover:text-white transition-colors duration-300">
+                      {feature.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-light mb-6 text-white">{feature.title}</h3>
+                  <p className="text-white/60 leading-relaxed font-light">{feature.description}</p>
                 </div>
               ))}
-            </div>
-
-            {/* Map Placeholder */}
-            <div className="aspect-[21/9] rounded-3xl bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <svg className="w-16 h-16 mx-auto mb-4 text-black/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <p className="text-black/60 font-light">Interactive map location</p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
