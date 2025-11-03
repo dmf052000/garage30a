@@ -1,6 +1,61 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+
+// Custom hook for tilt effect
+function useTilt() {
+  const [tiltStyle, setTiltStyle] = useState({ transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)' });
+  const elementRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!elementRef.current) return;
+    const rect = elementRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    setTiltStyle({
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`,
+      transition: 'none'
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTiltStyle({
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+      transition: 'transform 0.5s ease-out'
+    });
+  };
+
+  return { tiltStyle, elementRef, handleMouseMove, handleMouseLeave };
+}
+
+// Tilt Image Component
+function TiltImage({ src, alt, onClick }) {
+  const { tiltStyle, elementRef, handleMouseMove, handleMouseLeave } = useTilt();
+
+  return (
+    <button
+      ref={elementRef}
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
+      style={tiltStyle}
+    >
+      <Image 
+        src={src} 
+        alt={alt}
+        fill
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+    </button>
+  );
+}
 
 export default function EliteGarageClub() {
   const [scrollY, setScrollY] = useState(0);
@@ -260,123 +315,52 @@ export default function EliteGarageClub() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Gallery Images - Using real images */}
-              <button 
+              {/* Gallery Images - Using real images with tilt effect */}
+              <TiltImage
+                src="/images/image2.jpg"
+                alt="Luxury Interiors"
                 onClick={() => setSelectedImage('/images/image2.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image2.jpg" 
-                  alt="Luxury Interiors"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image3.jpg"
+                alt="Climate Control"
                 onClick={() => setSelectedImage('/images/image3.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image3.jpg" 
-                  alt="Climate Control"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image14.jpg"
+                alt="Premium Storage"
                 onClick={() => setSelectedImage('/images/image14.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image14.jpg" 
-                  alt="Premium Storage"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image11.jpg"
+                alt="Modern Design"
                 onClick={() => setSelectedImage('/images/image11.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image11.jpg" 
-                  alt="Modern Design"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image15.jpg"
+                alt="Custom Layouts"
                 onClick={() => setSelectedImage('/images/image15.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image15.jpg" 
-                  alt="Custom Layouts"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image5.jpg"
+                alt="Luxury Features"
                 onClick={() => setSelectedImage('/images/image5.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image5.jpg" 
-                  alt="Luxury Features"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image10.jpg"
+                alt="Elite Spaces"
                 onClick={() => setSelectedImage('/images/image10.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image10.jpg" 
-                  alt="Elite Spaces"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image13.jpg"
+                alt="Premium Experience"
                 onClick={() => setSelectedImage('/images/image13.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image13.jpg" 
-                  alt="Premium Experience"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
-              
-              <button 
+              />
+              <TiltImage
+                src="/images/image12.jpg"
+                alt="Exclusive Collection"
                 onClick={() => setSelectedImage('/images/image12.jpg')}
-                className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
-              >
-                <Image 
-                  src="/images/image12.jpg" 
-                  alt="Exclusive Collection"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </button>
+              />
             </div>
           </div>
         </section>
