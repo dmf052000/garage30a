@@ -61,6 +61,7 @@ export default function EliteGarageClub() {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,6 +78,38 @@ export default function EliteGarageClub() {
     };
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  // Video autoplay on scroll
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch((error) => {
+              // Autoplay was prevented, user interaction required
+              console.log('Video autoplay prevented:', error);
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Play when 50% of video is visible
+        rootMargin: '0px',
+      }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
   }, []);
 
   return (
@@ -213,35 +246,6 @@ export default function EliteGarageClub() {
           </div>
         </section>
 
-        {/* Location Section */}
-        <section id="location" className="py-32 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-24">
-              <div className="inline-block px-6 py-2 bg-black/10 backdrop-blur-sm border border-black/20 rounded-full text-black/80 text-xs font-light tracking-widest uppercase mb-8">
-                Prime Location
-              </div>
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Location</h2>
-              <p className="text-lg text-black/70 max-w-3xl mx-auto font-light leading-relaxed">
-                Tucked along highway 98 near Florida's iconic 30A corridor, this exclusive community offers the perfect location for your luxury garage office.
-              </p>
-            </div>
-
-            {/* Google Maps Embed */}
-            <div className="aspect-[21/9] rounded-3xl overflow-hidden relative">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47149.43145606431!2d-86.09566864174735!3d30.31679682429975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8893e5f5121632f9%3A0x421d5796fc0b6135!2s5283%20US-98%2C%20Santa%20Rosa%20Beach%2C%20FL%2032459!5e0!3m2!1sen!2sus!4v1762146064800!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 w-full h-full"
-              ></iframe>
-            </div>
-          </div>
-        </section>
-
         {/* Spaces Gallery */}
         <section id="spaces" className="py-32 bg-white">
           <div className="max-w-6xl mx-auto px-6">
@@ -249,27 +253,32 @@ export default function EliteGarageClub() {
               <div className="inline-block px-6 py-2 bg-black/10 backdrop-blur-sm border border-black/20 rounded-full text-black/80 text-xs font-light tracking-widest uppercase mb-8">
                 Luxury Car Garages
               </div>
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">for What Moves You</h2>
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">What is Garage 30A?</h2>
               <p className="text-lg text-black/70 max-w-3xl mx-auto font-light leading-relaxed">
-                Each luxury garage condo is privately owned, fully customizable, and designed to reflect your lifestyle. As a member, you'll enjoy access to exclusive shared amenities, including spacious gathering areas and a members-only clubhouse. It's a place to connect, unwind, and talk shop with fellow car and motorsport enthusiasts.
+                Garage 30A is a luxury garage community designed for those who value craftsmanship, privacy, and lifestyle. Each unit is individually owned, deeded, and customizable—perfect for car collectors, hobbyists, or those seeking a personal retreat. Ownership also includes access to exclusive common areas and a private members' clubhouse.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-16 mb-20">
-              {/* Gallery Images */}
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 relative group">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <h3 className="text-3xl font-light mb-3 text-white">Climate-Controlled Interiors</h3>
-                  <p className="text-white/80 font-light">Pristine conditions year-round</p>
-                </div>
+              {/* Video */}
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group">
+                <video
+                  ref={videoRef}
+                  src="/videos/robbie.mov"
+                  className="w-full h-full object-cover"
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                />
               </div>
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 relative group">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <h3 className="text-3xl font-light mb-3 text-white">Flexible Layouts</h3>
-                  <p className="text-white/80 font-light">Designed to your specifications</p>
-                </div>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group bg-gray-100">
+                <Image 
+                  src="/images/map.jpg" 
+                  alt="Map"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
 
@@ -297,6 +306,35 @@ export default function EliteGarageClub() {
               <p className="text-2xl font-light text-black/80 leading-relaxed max-w-3xl mx-auto">
                 With 24/7 gated access, wide drive aisles, and year-round convenience, Garage 30A delivers peace of mind, long-term value, and a true sense of belonging. This is more than car storage. It's ownership. It's community. It's your space, your style, your sanctuary.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Location Section */}
+        <section id="location" className="py-32 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-24">
+              <div className="inline-block px-6 py-2 bg-black/10 backdrop-blur-sm border border-black/20 rounded-full text-black/80 text-xs font-light tracking-widest uppercase mb-8">
+                Prime Location
+              </div>
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Location</h2>
+              <p className="text-lg text-black/70 max-w-3xl mx-auto font-light leading-relaxed">
+                Tucked along highway 98 near Florida's iconic 30A corridor, this exclusive community offers the perfect location for your luxury garage office.
+              </p>
+            </div>
+
+            {/* Google Maps Embed */}
+            <div className="aspect-[21/9] rounded-3xl overflow-hidden relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47149.43145606431!2d-86.09566864174735!3d30.31679682429975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8893e5f5121632f9%3A0x421d5796fc0b6135!2s5283%20US-98%2C%20Santa%20Rosa%20Beach%2C%20FL%2032459!5e0!3m2!1sen!2sus!4v1762146064800!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full"
+              ></iframe>
             </div>
           </div>
         </section>
@@ -472,6 +510,13 @@ export default function EliteGarageClub() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-12">
               <div className="text-center p-8 rounded-3xl bg-gray-50 border border-gray-100">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
+                    alt="Mike R"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="text-4xl mb-6">"</div>
                 <p className="text-lg text-black/80 mb-6 font-light leading-relaxed">
                   I've stored cars all over the country, and nothing compares to Garage 30A. It's not just the security or the quality of the space. It's the sense of pride and community that comes with ownership. This place was clearly built by people who get it.
@@ -482,6 +527,13 @@ export default function EliteGarageClub() {
                 </div>
               </div>
               <div className="text-center p-8 rounded-3xl bg-gray-50 border border-gray-100">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
+                    alt="Denise T"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="text-4xl mb-6">"</div>
                 <p className="text-lg text-black/80 mb-6 font-light leading-relaxed">
                   Garage 30A gave me more than a place to park my vehicles. It gave me a place to unwind, talk cars, and meet people who share the same passion. The monthly Cars & Coffee events are the highlight of my weekends.
@@ -492,6 +544,13 @@ export default function EliteGarageClub() {
                 </div>
               </div>
               <div className="text-center p-8 rounded-3xl bg-gray-50 border border-gray-100">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
+                    alt="Jordan M"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="text-4xl mb-6">"</div>
                 <p className="text-lg text-black/80 mb-6 font-light leading-relaxed">
                   I wasn't sure I needed a garage office until I toured Garage 30A. Now I can't imagine not having one. It's clean, secure, and totally customizable. The ownership model just made sense.
@@ -521,34 +580,54 @@ export default function EliteGarageClub() {
             {/* Contact Form */}
             <div className="bg-white rounded-3xl p-12 md:p-16">
               <h3 className="text-3xl font-light mb-12 text-black">Schedule Your Private Tour</h3>
-              <form className="space-y-8">
+              <form
+                action="https://formspree.io/f/YOUR_FORM_ID"
+                method="POST"
+                className="space-y-8"
+              >
                 <div className="grid md:grid-cols-2 gap-8">
                   <input
                     type="text"
+                    name="firstName"
                     placeholder="First Name"
+                    required
                     className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
                   />
                   <input
                     type="text"
+                    name="lastName"
                     placeholder="Last Name"
+                    required
                     className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
                   />
                 </div>
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email Address"
+                  required
                   className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
                 />
                 <input
                   type="tel"
+                  name="phone"
                   placeholder="Phone Number"
+                  required
                   className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
                 />
                 <textarea
+                  name="message"
                   placeholder="Tell us about your collection and interests"
                   rows={4}
+                  required
                   className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors resize-none font-light"
                 ></textarea>
+                <button
+                  type="submit"
+                  className="w-full bg-black text-white px-8 py-4 rounded-2xl font-medium hover:bg-black/90 transition-all duration-300"
+                >
+                  Send Message
+                </button>
               </form>
               <p className="text-sm text-black/60 mt-8 font-light">
                 Contact us for more information about our exclusive membership opportunities
