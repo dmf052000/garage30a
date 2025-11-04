@@ -512,7 +512,7 @@ export default function EliteGarageClub() {
               <div className="text-center p-8 rounded-3xl bg-gray-50 border border-gray-100">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
+                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
                     alt="Mike R"
                     className="w-full h-full object-cover"
                   />
@@ -529,7 +529,7 @@ export default function EliteGarageClub() {
               <div className="text-center p-8 rounded-3xl bg-gray-50 border border-gray-100">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
                   <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
+                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
                     alt="Denise T"
                     className="w-full h-full object-cover"
                   />
@@ -546,7 +546,7 @@ export default function EliteGarageClub() {
               <div className="text-center p-8 rounded-3xl bg-gray-50 border border-gray-100">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
                   <img
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=faces&auto=format&q=80"
                     alt="Jordan M"
                     className="w-full h-full object-cover"
                   />
