@@ -235,8 +235,8 @@ export default function EliteGarageClub() {
                 <div className="text-sm font-light text-white/60 tracking-widest uppercase">Secure Access</div>
               </div>
               <div className="space-y-3">
-                <div className="text-5xl md:text-6xl font-thin text-white">5K+</div>
-                <div className="text-sm font-light text-white/60 tracking-widest uppercase">Square Feet</div>
+                <div className="text-5xl md:text-6xl font-thin text-white">5K</div>
+                <div className="text-sm font-light text-white/60 tracking-widest uppercase">Sq Ft Clubhouse</div>
               </div>
               <div className="space-y-3">
                 <div className="text-5xl md:text-6xl font-thin text-white">100%</div>
