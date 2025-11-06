@@ -164,6 +164,7 @@ export default function Garage30A() {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
+    const formspreeUrl = 'https://formspree.io/f/xovpoldj';
 
     // Track CTA click
     if (typeof window !== 'undefined' && window.gtag) {
@@ -174,9 +175,12 @@ export default function Garage30A() {
     }
 
     try {
-      const response = await fetch('/api/lead', {
+      const response = await fetch(formspreeUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
         body: JSON.stringify({ ...data, formType })
       });
 
@@ -385,7 +389,7 @@ export default function Garage30A() {
         </section>
 
         {/* What is Garage 30A Section */}
-        <section id="vision" className="py-32 bg-white">
+        <section id="vision" className="py-32 bg-white pattern-dots">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">What is Garage 30A</h2>
@@ -422,7 +426,7 @@ export default function Garage30A() {
         </section>
 
         {/* Location Section */}
-        <section id="location" className="py-32 bg-black">
+        <section id="location" className="py-32 bg-black pattern-grid-dark">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Location</h2>
@@ -460,7 +464,7 @@ export default function Garage30A() {
         </section>
 
         {/* Features & Customization Section */}
-        <section className="py-32 bg-white">
+        <section className="py-32 bg-white pattern-grid">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Features & Customization</h2>
@@ -528,7 +532,7 @@ export default function Garage30A() {
         </section>
 
         {/* Ownership Benefits Section */}
-        <section id="ownership" className="py-32 bg-black">
+        <section id="ownership" className="py-32 bg-black pattern-dots-dark">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Ownership Benefits</h2>
@@ -575,7 +579,7 @@ export default function Garage30A() {
         </section>
 
         {/* Amenities Section */}
-        <section className="py-32 bg-white">
+        <section className="py-32 bg-white pattern-dots">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Amenities</h2>
@@ -616,7 +620,7 @@ export default function Garage30A() {
         </section>
 
         {/* Gallery Section */}
-        <section className="py-32 bg-black">
+        <section className="py-32 bg-black pattern-diagonal">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Spaces Designed to Impress</h2>
@@ -658,7 +662,7 @@ export default function Garage30A() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-32 bg-white">
+        <section id="faq" className="py-32 bg-white pattern-grid">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">FAQ</h2>
@@ -674,18 +678,18 @@ export default function Garage30A() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-32 bg-white">
+        <section id="contact" className="py-32 bg-black pattern-dots-dark">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Ready to see it in person?</h2>
-              <p className="text-lg text-black/70 font-light mb-8">
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Ready to see it in person?</h2>
+              <p className="text-lg text-white/70 font-light mb-8">
                 Get in touch to reserve your unit
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
                 <a 
                   href="tel:+12149916966" 
                   onClick={() => trackCTA('cta_phone_call')}
-                  className="text-black/80 hover:text-black transition-colors font-light"
+                  className="text-white/80 hover:text-white transition-colors font-light"
                 >
                   Chip McCraney • (214) 991-6966
                 </a>
@@ -713,7 +717,7 @@ export default function Garage30A() {
                     name="firstName"
                     placeholder="First Name"
                     required
-                    className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
+                    className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light text-black"
                     aria-label="First Name"
                   />
                   <input
@@ -721,7 +725,7 @@ export default function Garage30A() {
                     name="lastName"
                     placeholder="Last Name"
                     required
-                    className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
+                    className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light text-black"
                     aria-label="Last Name"
                   />
                 </div>
@@ -730,7 +734,7 @@ export default function Garage30A() {
                   name="email"
                   placeholder="Email Address"
                   required
-                  className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
+                  className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light text-black"
                   aria-label="Email Address"
                 />
                 <input
@@ -738,7 +742,7 @@ export default function Garage30A() {
                   name="phone"
                   placeholder="Phone Number"
                   required
-                  className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light"
+                  className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors font-light text-black"
                   aria-label="Phone Number"
                 />
                 <textarea
@@ -746,7 +750,7 @@ export default function Garage30A() {
                   placeholder="Tell us about your collection and interests"
                   rows={4}
                   required
-                  className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors resize-none font-light"
+                  className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors resize-none font-light text-black"
                   aria-label="Message"
                 ></textarea>
                 <button
@@ -911,6 +915,41 @@ export default function Garage30A() {
 
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
           box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Subtle background patterns */
+        .pattern-dots {
+          background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+          background-size: 24px 24px;
+        }
+
+        .pattern-grid {
+          background-image: 
+            linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+          background-size: 40px 40px;
+        }
+
+        .pattern-diagonal {
+          background-image: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.05) 10px,
+            rgba(255, 255, 255, 0.05) 20px
+          );
+        }
+
+        .pattern-dots-dark {
+          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+          background-size: 24px 24px;
+        }
+
+        .pattern-grid-dark {
+          background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+          background-size: 40px 40px;
         }
       `}</style>
     </>
