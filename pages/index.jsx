@@ -263,18 +263,21 @@ export default function Garage30A() {
         <nav className={`fixed w-full z-50 transition-all duration-500 ${
           scrollY > 20 ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
         }`}>
-          <div className="max-w-6xl mx-auto px-6 transition-all duration-500 py-6">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 transition-all duration-500 py-3 sm:py-6">
             <div className="flex justify-between items-center">
               <a href="#hero" className="flex items-center">
                 <div className={`flex items-center justify-center transition-all duration-500 ${
-                  scrollY > 20 ? 'w-16 h-16' : 'w-40 h-40'
+                  scrollY > 20 
+                    ? 'w-12 h-12 sm:w-16 sm:h-16' 
+                    : 'w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40'
                 }`}>
                   <Image 
                     src="/logo.svg" 
                     alt="Garage 30A" 
-                    width={scrollY > 20 ? 64 : 160} 
-                    height={scrollY > 20 ? 64 : 160}
-                    className="object-contain"
+                    width={160} 
+                    height={160}
+                    className="object-contain w-full h-full"
+                    priority
                   />
                 </div>
               </a>
@@ -298,30 +301,71 @@ export default function Garage30A() {
 
               {/* Mobile Menu Button */}
               <button 
-                className="lg:hidden"
+                className="lg:hidden p-2 -mr-2 touch-manipulation"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
+                aria-expanded={isMenuOpen}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 6h16M4 12h16M4 18h16" />
+                <svg className={`w-7 h-7 transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
                 </svg>
               </button>
             </div>
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-              <div className="lg:hidden mt-6 pb-6 border-t border-white/10">
-                <div className="flex flex-col space-y-4 pt-6">
-                  <a href="#hero" className="text-sm font-light hover:text-white/60 transition-colors" onClick={() => setIsMenuOpen(false)}>Home</a>
-                  <a href="#vision" className="text-sm font-light hover:text-white/60 transition-colors" onClick={() => setIsMenuOpen(false)}>The Vision</a>
-                  <a href="#ownership" className="text-sm font-light hover:text-white/60 transition-colors" onClick={() => setIsMenuOpen(false)}>Ownership</a>
-                  <a href="#location" className="text-sm font-light hover:text-white/60 transition-colors" onClick={() => setIsMenuOpen(false)}>Location</a>
-                  <a href="#faq" className="text-sm font-light hover:text-white/60 transition-colors" onClick={() => setIsMenuOpen(false)}>FAQ</a>
-                  <a href="#contact" className="text-sm font-light hover:text-white/60 transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</a>
+              <div className="lg:hidden mt-4 pb-4 border-t border-white/10 animate-fadeIn">
+                <div className="flex flex-col space-y-1 pt-4">
+                  <a 
+                    href="#hero" 
+                    className="text-base font-light py-3 px-2 hover:text-white/60 hover:bg-white/5 transition-colors rounded-lg touch-manipulation" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Home
+                  </a>
+                  <a 
+                    href="#vision" 
+                    className="text-base font-light py-3 px-2 hover:text-white/60 hover:bg-white/5 transition-colors rounded-lg touch-manipulation" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    The Vision
+                  </a>
+                  <a 
+                    href="#ownership" 
+                    className="text-base font-light py-3 px-2 hover:text-white/60 hover:bg-white/5 transition-colors rounded-lg touch-manipulation" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Ownership
+                  </a>
+                  <a 
+                    href="#location" 
+                    className="text-base font-light py-3 px-2 hover:text-white/60 hover:bg-white/5 transition-colors rounded-lg touch-manipulation" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Location
+                  </a>
+                  <a 
+                    href="#faq" 
+                    className="text-base font-light py-3 px-2 hover:text-white/60 hover:bg-white/5 transition-colors rounded-lg touch-manipulation" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    FAQ
+                  </a>
+                  <a 
+                    href="#contact" 
+                    className="text-base font-light py-3 px-2 hover:text-white/60 hover:bg-white/5 transition-colors rounded-lg touch-manipulation" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Contact
+                  </a>
                   <a 
                     href="#contact" 
                     onClick={(e) => { trackCTA('cta_request_pricing'); setIsMenuOpen(false); }}
-                    className="bg-white text-black px-8 py-3 text-sm font-medium hover:bg-white/90 transition-all w-fit inline-block"
+                    className="bg-white text-black px-6 py-3.5 text-base font-medium hover:bg-white/90 transition-all mt-2 rounded-lg text-center touch-manipulation"
                   >
                     Reserve Now
                   </a>
@@ -415,18 +459,12 @@ export default function Garage30A() {
                 />
               </div>
               <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group bg-gray-100">
-                <object
-                  data="/images/unitmap.pdf"
-                  type="application/pdf"
-                  className="w-full h-full"
-                  aria-label="Location Map"
-                >
-                  <iframe
-                    src="/images/unitmap.pdf"
-                    className="w-full h-full"
-                    title="Location Map"
-                  ></iframe>
-                </object>
+                <img
+                  src="/images/map.jpg"
+                  alt="Unit Map"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -842,15 +880,15 @@ export default function Garage30A() {
       {/* Lightbox Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-8 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
           onClick={() => setSelectedImage(null)}
         >
           <button 
             onClick={() => setSelectedImage(null)}
-            className="absolute top-8 right-8 text-white hover:text-white/60 transition-colors"
+            className="absolute top-4 right-4 sm:top-8 sm:right-8 text-white hover:text-white/60 transition-colors p-2 touch-manipulation z-10"
             aria-label="Close lightbox"
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -922,6 +960,25 @@ export default function Garage30A() {
 
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
           box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile optimizations */
+        .touch-manipulation {
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (max-width: 640px) {
+          /* Prevent horizontal scroll on mobile */
+          body {
+            overflow-x: hidden;
+          }
+          
+          /* Improve tap targets on mobile */
+          a, button {
+            min-height: 44px;
+            min-width: 44px;
+          }
         }
 
         /* Subtle background patterns */
