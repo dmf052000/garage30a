@@ -355,7 +355,8 @@ export default function Garage30A() {
                 />
               </div>
             </div>
-            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-black/60 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80"></div>
           </div>
 
           {/* Hero Content */}
@@ -414,12 +415,18 @@ export default function Garage30A() {
                 />
               </div>
               <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group bg-gray-100">
-                <Image 
-                  src="/images/map.jpg" 
-                  alt="Location Map" 
-                  fill
-                  className="object-contain"
-                />
+                <object
+                  data="/images/unitmap.pdf"
+                  type="application/pdf"
+                  className="w-full h-full"
+                  aria-label="Location Map"
+                >
+                  <iframe
+                    src="/images/unitmap.pdf"
+                    className="w-full h-full"
+                    title="Location Map"
+                  ></iframe>
+                </object>
               </div>
             </div>
           </div>
