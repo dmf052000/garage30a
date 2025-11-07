@@ -406,10 +406,10 @@ export default function Garage30A() {
           {/* Hero Content */}
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <h1 className="text-5xl md:text-7xl font-thin mb-6 text-white">
-              Your Dream Garage on Florida's Scenic 30A
+              Luxury Car Garages on 30A
             </h1>
             <p className="text-xl md:text-2xl font-light text-white/90 mb-12 leading-relaxed">
-              Luxury car condominiums for collectors and<br />adventurers—where storage becomes lifestyle.
+              Where luxury storage meets lifestyle.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
@@ -524,7 +524,7 @@ export default function Garage30A() {
                 <ul className="space-y-4 text-black/70 font-light">
                   <li className="flex items-start gap-3">
                     <span className="text-black/60 mt-1">•</span>
-                    <span>30' x 40' units with soaring ceilings (up to 25')</span>
+                    <span>30' x 40' units with 25 ft. soaring ceilings </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-black/60 mt-1">•</span>
@@ -634,30 +634,30 @@ export default function Garage30A() {
               <div className="text-center p-6">
                 <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-black/20 rounded-full">
                   <svg className="w-6 h-6 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-light mb-3 text-black">Members Clubhouse</h3>
+                <h3 className="text-lg font-light mb-3 text-black">Access to Sporting Events</h3>
                 <p className="text-black/70 font-light text-sm">For events and private parties</p>
               </div>
 
               <div className="text-center p-6">
                 <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-black/20 rounded-full">
                   <svg className="w-6 h-6 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-light mb-3 text-black">Wi-Fi & Cable-Ready</h3>
-                <p className="text-black/70 font-light text-sm">Infrastructure pre-installed</p>
+                <h3 className="text-lg font-light mb-3 text-black">Private Jet Charter</h3>
+                <p className="text-black/70 font-light text-sm">Several options available</p>
               </div>
 
               <div className="text-center p-6">
                 <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-black/20 rounded-full">
                   <svg className="w-6 h-6 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-light mb-3 text-black">Common Areas</h3>
+                <h3 className="text-lg font-light mb-3 text-black">Private mobile app</h3>
                 <p className="text-black/70 font-light text-sm">Thoughtfully planned spaces</p>
               </div>
             </div>
