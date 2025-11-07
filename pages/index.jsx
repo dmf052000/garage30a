@@ -627,38 +627,57 @@ export default function Garage30A() {
         <section className="py-32 bg-white pattern-dots">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Amenities</h2>
+              <h2 className="text-4xl md:text-6xl font-thin mb-4 text-black">Amenities</h2>
+              <p className="text-lg md:text-xl font-light text-black/70">Exclusive Perks for Garage 30A Owners</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="text-center p-6">
-                <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-black/20 rounded-full">
-                  <svg className="w-6 h-6 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Access to Premier Events */}
+              <div className="bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/golf.png"
+                    alt="Premier Events"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="text-lg font-light mb-3 text-black">Access to Sporting Events</h3>
-                <p className="text-black/70 font-light text-sm">For events and private parties</p>
+                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
+                  <h3 className="text-xl font-light mb-3 text-white">Access to Premier Events</h3>
+                  <p className="text-white/80 font-light text-sm leading-relaxed">Private access to elite automotive and sporting events—from track days to VIP suite.</p>
+                </div>
               </div>
 
-              <div className="text-center p-6">
-                <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-black/20 rounded-full">
-                  <svg className="w-6 h-6 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
+              {/* Private Jet Charter */}
+              <div className="bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/plane.jpg"
+                    alt="Private Jet"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="text-lg font-light mb-3 text-black">Private Jet Charter</h3>
-                <p className="text-black/70 font-light text-sm">Several options available</p>
+                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
+                  <h3 className="text-xl font-light mb-3 text-white">Private Jet Charter</h3>
+                  <p className="text-white/80 font-light text-sm leading-relaxed">Exclusive charter partnerships for members, with preferred rates and flexible scheduling.</p>
+                </div>
               </div>
 
-              <div className="text-center p-6">
-                <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-black/20 rounded-full">
-                  <svg className="w-6 h-6 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
+              {/* Members-Only App */}
+              <div className="bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/app.jpg"
+                    alt="Mobile App"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="text-lg font-light mb-3 text-black">Private mobile app</h3>
-                <p className="text-black/70 font-light text-sm">Thoughtfully planned spaces</p>
+                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
+                  <h3 className="text-xl font-light mb-3 text-white">Members-Only App</h3>
+                  <p className="text-white/80 font-light text-sm leading-relaxed">Manage your unit, book experiences, and connect with fellow owners—all in one place.</p>
+                </div>
               </div>
             </div>
           </div>
