@@ -745,7 +745,7 @@ export default function Garage30A() {
         <section id="contact" className="py-32 bg-black pattern-dots-dark">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Ready to see it in person?</h2>
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Now Accepting Limited Reservations</h2>
               <p className="text-lg text-white/70 font-light mb-8">
                 Get in touch to reserve your unit
               </p>
@@ -811,7 +811,7 @@ export default function Garage30A() {
                 />
                 <textarea
                   name="message"
-                  placeholder="Tell us about your collection and interests"
+                  placeholder=""
                   rows={4}
                   required
                   className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-black transition-colors resize-none font-light text-black"
