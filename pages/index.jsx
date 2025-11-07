@@ -399,8 +399,8 @@ export default function Garage30A() {
                 />
               </div>
             </div>
-            <div className="absolute inset-0 bg-black/60 mix-blend-multiply"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80"></div>
+            <div className="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/70"></div>
           </div>
 
           {/* Hero Content */}
@@ -482,7 +482,7 @@ export default function Garage30A() {
                 Find us at <strong>5283 Hwy 98 E, Santa Rosa Beach, Florida</strong>—minutes from Grayton, Blue Mountain, WaterColor, Alys, and Rosemary Beach. Enjoy the convenience of Highway 98 with the exclusivity of the 30A lifestyle.
               </p>
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=5283+Hwy+98+E,+Santa+Rosa+Beach,+FL+32459"
+                href="https://maps.apple.com/?q=5283+Hwy+98+E,+Santa+Rosa+Beach,+FL+32459"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block border-2 border-white text-white px-8 py-3 text-base font-medium hover:bg-white hover:text-black transition-all duration-300"
@@ -491,19 +491,27 @@ export default function Garage30A() {
               </a>
             </div>
 
-            {/* Google Maps Embed */}
-            <div className="aspect-[21/9] rounded-3xl overflow-hidden relative">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47149.43145606431!2d-86.09566864174735!3d30.31679682429975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8893e5f5121632f9%3A0x421d5796fc0b6135!2s5283%20US-98%2C%20Santa%20Rosa%20Beach%2C%20FL%2032459!5e0!3m2!1sen!2sus!4v1762146064800!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+            {/* Apple Maps Embed */}
+            <div className="aspect-[21/9] rounded-3xl overflow-hidden relative group cursor-pointer">
+              <a
+                href="https://maps.apple.com/?q=5283+Hwy+98+E,+Santa+Rosa+Beach,+FL+32459"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="absolute inset-0 w-full h-full"
-                title="Garage 30A Location"
-              ></iframe>
+              >
+                <Image
+                  src="/images/map2.jpg"
+                  alt="Garage 30A Location"
+                  fill
+                  className="object-cover object-top group-hover:opacity-90 transition-opacity"
+                  style={{ objectPosition: 'center top' }}
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                  <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-black font-medium">Open in Apple Maps</span>
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
         </section>
