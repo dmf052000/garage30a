@@ -458,9 +458,9 @@ export default function Garage30A() {
                   preload="metadata"
                 />
               </div>
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group bg-gray-100 cursor-pointer" onClick={() => setSelectedImage('/images/complex.png')}>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group bg-gray-100 cursor-pointer" onClick={() => setSelectedImage('/images/complex.PNG')}>
                 <img
-                  src="/images/complex.png"
+                  src="/images/complex.PNG"
                   alt="Unit Map"
                   className="absolute inset-0 w-full h-full object-contain"
                   loading="lazy"
