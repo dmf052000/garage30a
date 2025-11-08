@@ -1,36 +1,56 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// FAQ Accordion Component
+// FAQ Accordion Component with Framer Motion
 function FAQAccordion({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-white/10 last:border-b-0">
-      <button
+    <motion.div 
+      className="border-b border-white/10 last:border-b-0"
+      initial={false}
+    >
+      <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-left py-6 flex justify-between items-center group"
         aria-expanded={isOpen}
+        whileHover={{ opacity: 0.9 }}
       >
         <h3 className="text-lg font-light text-white pr-8 group-hover:text-white/80 transition-colors">
           {question}
         </h3>
-        <svg
-          className={`w-5 h-5 text-white/60 transition-transform flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+        <motion.svg
+          className="w-5 h-5 text-white/60 flex-shrink-0"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className="pb-6 text-white/70 font-light leading-relaxed">
-          {answer}
-        </div>
-      )}
-    </div>
+        </motion.svg>
+      </motion.button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="pb-6 text-white/70 font-light leading-relaxed">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
@@ -58,10 +78,68 @@ const FAQ_DATA = [
   }
 ];
 
-// Tilt Image Component
+// Section Reveal Component
+function SectionReveal({ children, className = "", delay = 0 }) {
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.8, ease: "easeOut", delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// Count Up Component for Specs
+function CountUp({ end, duration = 2, suffix = "" }) {
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      setCount(end);
+      return;
+    }
+
+    let startTime = null;
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+    requestAnimationFrame(animate);
+  }, [inView, end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
+// Tilt Image Component with Framer Motion
 function TiltImage({ src, alt, onClick }) {
   const [tiltStyle, setTiltStyle] = useState({ transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)' });
   const elementRef = useRef(null);
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
 
   const handleMouseMove = (e) => {
     if (!elementRef.current) return;
@@ -87,13 +165,21 @@ function TiltImage({ src, alt, onClick }) {
   };
 
   return (
-    <button
-      ref={elementRef}
+    <motion.button
+      ref={(node) => {
+        elementRef.current = node;
+        ref(node);
+      }}
       onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="aspect-[4/3] rounded-3xl overflow-hidden relative group cursor-pointer"
       style={tiltStyle}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
       <Image 
         src={src} 
@@ -102,7 +188,7 @@ function TiltImage({ src, alt, onClick }) {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-    </button>
+    </motion.button>
   );
 }
 
@@ -113,6 +199,54 @@ export default function Garage30A() {
   const [formStatus, setFormStatus] = useState({ type: null, message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const videoRef = useRef(null);
+  const amenitiesRef = useRef(null);
+  
+  // Register GSAP ScrollTrigger
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      window.gsap = gsap;
+    }
+  }, []);
+
+  // GSAP ScrollTrigger for Amenities Section
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined' || !amenitiesRef.current) return;
+    
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const cards = amenitiesRef.current.querySelectorAll('.amenity-card');
+    
+    cards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            end: "top 50%",
+            toggleActions: "play none none none",
+          },
+          delay: index * 0.15,
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -404,39 +538,73 @@ export default function Garage30A() {
           </div>
 
           {/* Hero Content */}
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-5xl md:text-7xl font-thin mb-6 text-white">
+          <motion.div 
+            className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          >
+            <motion.h1 
+              className="text-5xl md:text-7xl font-thin mb-6 text-white"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+            >
               Luxury Car Garages on 30A
-            </h1>
-            <p className="text-xl md:text-2xl font-light text-white/90 mb-12 leading-relaxed">
+            </motion.h1>
+            <motion.p 
+              className="text-xl md:text-2xl font-light text-white/90 mb-12 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
+            >
               Where luxury storage meets lifestyle.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
+            </motion.p>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.9 }}
+            >
+              <motion.a 
                 href="#contact" 
                 onClick={() => trackCTA('cta_request_pricing')}
                 className="bg-white text-black px-10 py-4 text-base font-medium hover:bg-white/90 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Reserve Now
-              </a>
-            </div>
-          </div>
+              </motion.a>
+            </motion.div>
+          </motion.div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 z-10">
+          <motion.div 
+            className="absolute bottom-16 left-1/2 transform -translate-x-1/2 z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.5 }}
+          >
             <div className="flex flex-col items-center space-y-2">
               <span className="text-xs font-light text-white/60 tracking-widest uppercase">Scroll</span>
-              <svg className="w-4 h-4 text-white/60 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <motion.svg 
+                className="w-4 h-4 text-white/60" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
+              </motion.svg>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* What is Garage 30A Section */}
         <section id="vision" className="py-32 bg-white pattern-dots">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-24">
+            <SectionReveal className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">What is Garage 30A</h2>
               <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
                 Not just storage. Ownership.
@@ -444,7 +612,7 @@ export default function Garage30A() {
               <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed">
                 Garage 30A is a private collection of individually owned luxury garage condos designed for your cars, hobbies, and gatherings. Each unit includes access to members-only common areas and a clubhouse, creating a true community of enthusiasts.
               </p>
-            </div>
+            </SectionReveal>
 
             <div className="grid md:grid-cols-2 gap-16 mb-20">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group">
@@ -473,7 +641,7 @@ export default function Garage30A() {
         {/* Location Section */}
         <section id="location" className="py-32 bg-black pattern-grid-dark">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-24">
+            <SectionReveal className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Location</h2>
               <p className="text-xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
                 In the heart of the Emerald Coast
@@ -481,18 +649,25 @@ export default function Garage30A() {
               <p className="text-lg text-white/70 max-w-4xl mx-auto font-light leading-relaxed mb-8">
                 Find us at <strong>5283 Hwy 98 E, Santa Rosa Beach, Florida</strong>—minutes from Grayton, Blue Mountain, WaterColor, Alys, and Rosemary Beach. Enjoy the convenience of Highway 98 with the exclusivity of the 30A lifestyle.
               </p>
-              <a 
+              <motion.a 
                 href="https://maps.apple.com/?q=5283+Hwy+98+E,+Santa+Rosa+Beach,+FL+32459"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block border-2 border-white text-white px-8 py-3 text-base font-medium hover:bg-white hover:text-black transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Open Map
-              </a>
-            </div>
+              </motion.a>
+            </SectionReveal>
 
             {/* Apple Maps Embed */}
-            <div className="aspect-[21/9] rounded-3xl overflow-hidden relative group cursor-pointer">
+            <SectionReveal delay={0.2}>
+              <motion.div 
+                className="aspect-[21/9] rounded-3xl overflow-hidden relative group cursor-pointer"
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.3 }}
+              >
               <a
                 href="https://maps.apple.com/?q=5283+Hwy+98+E,+Santa+Rosa+Beach,+FL+32459"
                 target="_blank"
@@ -512,19 +687,20 @@ export default function Garage30A() {
                   </div>
                 </div>
               </a>
-            </div>
+              </motion.div>
+            </SectionReveal>
           </div>
         </section>
 
         {/* Features & Customization Section */}
         <section className="py-32 bg-white pattern-grid">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-24">
+            <SectionReveal className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Features & Customization</h2>
               <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed">
                 Luxury by design
               </p>
-            </div>
+            </SectionReveal>
 
             <div className="grid md:grid-cols-3 gap-12 mb-16">
               <div>
@@ -532,7 +708,7 @@ export default function Garage30A() {
                 <ul className="space-y-4 text-black/70 font-light">
                   <li className="flex items-start gap-3">
                     <span className="text-black/60 mt-1">•</span>
-                    <span>30' x 40' units with 25 ft. soaring ceilings </span>
+                    <span><CountUp end={30} suffix="'" /> x <CountUp end={40} suffix="'" /> units with <CountUp end={25} suffix=" ft." /> soaring ceilings </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-black/60 mt-1">•</span>
@@ -587,7 +763,7 @@ export default function Garage30A() {
         {/* Ownership Benefits Section */}
         <section id="ownership" className="py-32 bg-black pattern-dots-dark">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Ownership Benefits</h2>
               <p className="text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
                 Own your space. Join the community.
@@ -595,7 +771,7 @@ export default function Garage30A() {
               <p className="text-lg text-white/70 max-w-4xl mx-auto font-light leading-relaxed">
                 24/7 access, equity growth, and a thriving network of car lovers. Customize now, enjoy forever, and resell like any other real estate when you're ready.
               </p>
-            </div>
+            </SectionReveal>
 
             <div className="grid md:grid-cols-3 gap-12">
               <div className="text-center p-8 rounded-3xl bg-white/10 border border-white/20">
@@ -634,14 +810,14 @@ export default function Garage30A() {
         {/* Amenities Section */}
         <section className="py-32 bg-white pattern-dots">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-4 text-black">Amenities</h2>
               <p className="text-lg md:text-xl font-light text-black/70">Exclusive Perks for Garage 30A Owners</p>
-            </div>
+            </SectionReveal>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div ref={amenitiesRef} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Access to Premier Events */}
-              <div className="bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src="/images/golf.png"
@@ -657,7 +833,7 @@ export default function Garage30A() {
               </div>
 
               {/* Private Jet Charter */}
-              <div className="bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src="/images/plane.jpg"
@@ -673,7 +849,7 @@ export default function Garage30A() {
               </div>
 
               {/* Members-Only App */}
-              <div className="bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src="/images/app.jpg"
@@ -694,9 +870,9 @@ export default function Garage30A() {
         {/* Gallery Section */}
         <section className="py-32 bg-black pattern-diagonal">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-24">
+            <SectionReveal className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Spaces Designed to Impress</h2>
-            </div>
+            </SectionReveal>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <TiltImage
@@ -736,10 +912,10 @@ export default function Garage30A() {
         {/* FAQ Section */}
         <section id="faq" className="py-32 bg-white pattern-grid">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">FAQ</h2>
               <p className="text-lg text-black/70 font-light">Frequently asked questions</p>
-            </div>
+            </SectionReveal>
 
             <div className="bg-black rounded-3xl p-8 md:p-12">
               {faqData.map((faq, index) => (
@@ -752,7 +928,7 @@ export default function Garage30A() {
         {/* Contact Section */}
         <section id="contact" className="py-32 bg-black pattern-dots-dark">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Now Accepting Limited Reservations</h2>
               <p className="text-lg text-white/70 font-light mb-8">
                 Get in touch to reserve your unit
@@ -766,7 +942,7 @@ export default function Garage30A() {
                   Chip McCraney • (214) 991-6966
                 </a>
               </div>
-            </div>
+            </SectionReveal>
 
             {/* Contact Form */}
             <div className="bg-white rounded-3xl p-12 md:p-16">
