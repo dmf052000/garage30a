@@ -81,8 +81,8 @@ const FAQ_DATA = [
     answer: 'Our facilities are equipped with state-of-the-art gate system and features, including video surveillance, secure access, and alarm systems for enhanced loss prevention.'
   },
   {
-    question: 'What amenities are available?',
-    answer: 'Garage 30A offers high-end amenities such as custom flooring, mezzanine options, restrooms, Wi-Fi, cable TV, and climate control. Owners can customize their units with features like metal plate cabinets, lifts, big screen TVs, and more. Unit ownership includes access to common areas and a members clubhouse where you can socialize with other enthusiasts.'
+    question: 'What upgrades are available?',
+    answer: 'Garage 30A offers high-end upgrades such as custom flooring, mezzanine options, restrooms, Wi-Fi, cable TV, and climate control. Owners can customize their units with features like metal plate cabinets, lifts, big screen TVs, and more. Unit ownership includes access to common areas and a members clubhouse where you can socialize with other enthusiasts.'
   },
   {
     question: 'Can I resell my Garage 30A unit?',
