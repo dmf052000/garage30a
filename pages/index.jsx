@@ -57,24 +57,60 @@ function FAQAccordion({ question, answer }) {
 // FAQ Data for structured data
 const FAQ_DATA = [
   {
-    question: 'Can I add a mezzanine or climate control?',
-    answer: 'Yes—both are popular options. Our team can help you customize your unit with a mezzanine for lounges, offices, or display areas, and climate control options to protect your collection.'
+    question: 'What is Garage 30A?',
+    answer: 'Garage 30A is a luxury garage platted subdivision offering individually owned custom storage units, ideal for car collections and man caves. Each unit is a separately titled and includes access to common area and a member\'s clubhouse.'
   },
   {
-    question: 'Are leases or subleases allowed?',
-    answer: 'No—this is ownership only. Each unit is individually owned with deeded ownership, giving you full equity and the ability to resell like any other real estate when you\'re ready.'
+    question: 'Where is Garage 30A located?',
+    answer: 'Units are located at 5283 Hwy 98 E in Santa Rosa Beach, Florida—between the 30A communities of Grayton Beach/Blue Mountain and Watercolor/Alys/Rosemary Beach.'
   },
   {
-    question: 'What do HOA fees cover?',
-    answer: 'HOA fees cover security systems, landscaping, clubhouse maintenance, and common-area upkeep. This ensures your investment remains pristine and the community stays exclusive.'
+    question: 'What are the benefits of Garage 30A ownership?',
+    answer: 'Owners benefit from 24/7 access, a strong sense of community, and the ability to build equity in their units. The facility also features large driving aisles, heavy-duty garage doors, and standard entry/exit doors.'
   },
   {
-    question: 'How do I get more info?',
-    answer: 'Tap "Reserve Now" anywhere on the site, or contact Chip McCraney directly at (214) 991-6966.'
+    question: 'What size are Garage 30A units?',
+    answer: 'All units are 30\' x 40\', with optional mezzanines and a maximum ceiling height of 25 feet.'
   },
   {
-    question: 'What can I store?',
-    answer: 'Garage 30A is purpose-built for car and motorcycle collections. (Not for RVs or boats.)'
+    question: 'Can I customize my Garage 30A unit?',
+    answer: 'Yes, we offer a variety of customization options, including mezzanine floors, climate control, custom lighting, and more. Initial consultation with our designer and architect are free of charge. Contact us to discuss customization options.'
+  },
+  {
+    question: 'How secure are Garage 30A units?',
+    answer: 'Our facilities are equipped with state-of-the-art gate system and features, including video surveillance, secure access, and alarm systems for enhanced loss prevention.'
+  },
+  {
+    question: 'What amenities are available?',
+    answer: 'Garage 30A offers high-end amenities such as custom flooring, mezzanine options, restrooms, Wi-Fi, cable TV, and climate control. Owners can customize their units with features like metal plate cabinets, lifts, big screen TVs, and more. Unit ownership includes access to common areas and a members clubhouse where you can socialize with other enthusiasts.'
+  },
+  {
+    question: 'Can I resell my Garage 30A unit?',
+    answer: 'Yes, you can resell your unit just like any other real estate. Ownership includes a title, allowing you to build and transfer equity. Leases and subleases are not allowed.'
+  },
+  {
+    question: 'What types of vehicles can be stored at Garage 30A?',
+    answer: 'Garage 30A storage is exclusively for car and motorcycle collections, not RV\'s or boats.'
+  },
+  {
+    question: 'Is there a community aspect to Garage 30A?',
+    answer: 'Yes, Garage 30A fosters a community atmosphere with a clubhouse for events and private parties. Owners often form friendships and share their hobbies and interests.'
+  },
+  {
+    question: 'What does a Garage 30A unit cost?',
+    answer: 'Unit pricing is determined by a variety of factors, including location, square footage, and amenities. Contact us for more information.'
+  },
+  {
+    question: 'CCRs (Covenants, Conditions, and Restrictions)',
+    answer: 'These are the rules and guidelines that govern the use of the property. They typically cover aspects like maintenance responsibilities, usage restrictions, and architectural guidelines to ensure the community maintains a certain standard and aesthetic.'
+  },
+  {
+    question: 'HOA (Homeowners Association) Fees',
+    answer: 'These fees are used to maintain common areas and provide services such as security and landscaping. The exact amount can vary based on the size and customization of your unit. Generally, the fees help cover the costs of maintaining the clubhouse, security services, and other shared amenities.'
+  },
+  {
+    question: 'How do I get more information about garage 30A?',
+    answer: 'Fill out our contact form or contact Chip McCraney at (214) 991-6966'
   }
 ];
 
@@ -639,7 +675,7 @@ export default function Garage30A() {
           <div className="max-w-6xl mx-auto px-6">
             <SectionReveal className="text-center mb-24">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Location</h2>
-              <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
+              <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
                 In the heart of the Emerald Coast.
               </p>
               <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed mb-8">
@@ -693,7 +729,7 @@ export default function Garage30A() {
           <div className="max-w-6xl mx-auto px-6">
             <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Features & Customization</h2>
-              <p className="text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed">
+              <p className="text-xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
                 Luxury. By Design.
               </p>
             </SectionReveal>
@@ -781,7 +817,7 @@ export default function Garage30A() {
           <div className="max-w-6xl mx-auto px-6">
             <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Ownership Benefits</h2>
-              <p className="text-2xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
+              <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
                 Own your space. Join the community.
               </p>
               <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed">
@@ -827,8 +863,8 @@ export default function Garage30A() {
         <section className="py-32 bg-black">
           <div className="max-w-6xl mx-auto px-6">
             <SectionReveal className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-thin mb-4 text-white">Amenities</h2>
-              <p className="text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">Exclusive Perks for Garage 30A Owners.</p>
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Amenities</h2>
+              <p className="text-xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">Exclusive Perks for Garage 30A Owners.</p>
             </SectionReveal>
 
             <div ref={amenitiesRef} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -888,7 +924,7 @@ export default function Garage30A() {
           <div className="max-w-4xl mx-auto px-6">
             <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">FAQ</h2>
-              <p className="text-2xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">Frequently Asked Questions</p>
+              <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">Frequently Asked Questions</p>
             </SectionReveal>
 
             <div className="bg-black rounded-3xl p-8 md:p-12">
@@ -903,17 +939,23 @@ export default function Garage30A() {
         <section id="contact" className="py-32 bg-black">
           <div className="max-w-4xl mx-auto px-6">
             <SectionReveal className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Now Accepting Limited Reservations</h2>
-              <p className="text-lg text-white/70 font-light mb-8">
-                Get in touch to reserve your unit
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Contact Us</h2>
+              <p className="text-xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
+                Get in touch for more information or reserve your Garage.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
                 <a 
                   href="tel:+12149916966" 
                   onClick={() => trackCTA('cta_phone_call')}
                   className="text-white/80 hover:text-white transition-colors font-light"
                 >
-                  Chip McCraney • (214) 991-6966
+                  Chip McCraney (214) 991-6966
+                </a>
+                <a 
+                  href="mailto:info@garage30a.com"
+                  className="text-white/80 hover:text-white transition-colors font-light"
+                >
+                  info@garage30a.com
                 </a>
               </div>
             </SectionReveal>
