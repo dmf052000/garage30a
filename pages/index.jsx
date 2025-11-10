@@ -400,11 +400,7 @@ export default function Garage30A() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 transition-all duration-500 py-3 sm:py-6">
             <div className="flex justify-between items-center">
               <a href="#hero" className="flex items-center">
-                <div className={`flex items-center justify-center transition-all duration-500 ${
-                  scrollY > 20 
-                    ? 'w-12 h-12 sm:w-16 sm:h-16' 
-                    : 'w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40'
-                }`}>
+                <div className="flex items-center justify-center w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40">
                   <Image 
                     src="/logo.svg" 
                     alt="Garage 30A" 
@@ -419,7 +415,7 @@ export default function Garage30A() {
               {/* Desktop Navigation */}
               <div className="hidden lg:flex items-center space-x-12">
                 <a href="#hero" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Home</a>
-                <a href="#vision" className="text-sm font-light hover:text-white/60 transition-colors duration-300">The Vision</a>
+                <a href="#vision" className="text-sm font-light hover:text-white/60 transition-colors duration-300">About</a>
                 <a href="#ownership" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Ownership</a>
                 <a href="#location" className="text-sm font-light hover:text-white/60 transition-colors duration-300">Location</a>
                 <a href="#faq" className="text-sm font-light hover:text-white/60 transition-colors duration-300">FAQ</a>
@@ -466,7 +462,7 @@ export default function Garage30A() {
                     className="text-base font-light py-3 px-2 hover:text-white/60 hover:bg-white/5 transition-colors rounded-lg touch-manipulation" 
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    The Vision
+                    About
                   </a>
                   <a 
                     href="#ownership" 
@@ -550,7 +546,7 @@ export default function Garage30A() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
             >
-              Luxury Car Garages on 30A
+              Luxury Car Garages
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl font-light text-white/90 mb-12 leading-relaxed"
@@ -558,7 +554,7 @@ export default function Garage30A() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
             >
-              Where luxury storage meets lifestyle.
+              Where luxury meets coastal lifestyle.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -602,15 +598,15 @@ export default function Garage30A() {
         </section>
 
         {/* What is Garage 30A Section */}
-        <section id="vision" className="py-32 bg-white pattern-dots">
+        <section id="vision" className="py-32 bg-black">
           <div className="max-w-6xl mx-auto px-6">
             <SectionReveal className="text-center mb-24">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">What is Garage 30A</h2>
-              <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
-                Not just storage. Ownership.
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">What is Garage 30A</h2>
+              <p className="text-xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
+                Beyond storage. Ownership.
               </p>
-              <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed">
-                Garage 30A is a private collection of individually owned luxury garage condos designed for your cars, hobbies, and gatherings. Each unit includes access to members-only common areas and a clubhouse, creating a true community of enthusiasts.
+              <p className="text-lg text-white/70 max-w-4xl mx-auto font-light leading-relaxed">
+              Garage 30A is a collection of privately owned, individually designed luxury garages for your cars and hobbies. Each owner enjoys access to exclusive common areas and a private clubhouse—fostering a true community of enthusiasts.
               </p>
             </SectionReveal>
 
@@ -626,11 +622,11 @@ export default function Garage30A() {
                   preload="metadata"
                 />
               </div>
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group bg-gray-100 cursor-pointer" onClick={() => setSelectedImage('/images/complex.PNG')}>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group bg-gray-100 cursor-pointer" onClick={() => setSelectedImage('/images/units.jpg')}>
                 <img
-                  src="/images/complex.PNG"
+                  src="/images/units.jpg"
                   alt="Unit Map"
-                  className="absolute inset-0 w-full h-full object-contain"
+                  className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>
@@ -639,21 +635,21 @@ export default function Garage30A() {
         </section>
 
         {/* Location Section */}
-        <section id="location" className="py-32 bg-black pattern-grid-dark">
+        <section id="location" className="py-32 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <SectionReveal className="text-center mb-24">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Location</h2>
-              <p className="text-xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
-                In the heart of the Emerald Coast
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Location</h2>
+              <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
+                In the heart of the Emerald Coast.
               </p>
-              <p className="text-lg text-white/70 max-w-4xl mx-auto font-light leading-relaxed mb-8">
+              <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed mb-8">
                 Find us at <strong>5283 Hwy 98 E, Santa Rosa Beach, Florida</strong>—minutes from Grayton, Blue Mountain, WaterColor, Alys, and Rosemary Beach. Enjoy the convenience of Highway 98 with the exclusivity of the 30A lifestyle.
               </p>
               <motion.a 
                 href="https://maps.apple.com/?q=5283+Hwy+98+E,+Santa+Rosa+Beach,+FL+32459"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block border-2 border-white text-white px-8 py-3 text-base font-medium hover:bg-white hover:text-black transition-all duration-300"
+                className="inline-block border-2 border-black text-black px-8 py-3 text-base font-medium hover:bg-black hover:text-white transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -693,65 +689,47 @@ export default function Garage30A() {
         </section>
 
         {/* Features & Customization Section */}
-        <section className="py-32 bg-white pattern-grid">
+        <section className="pt-32 pb-24 bg-black">
           <div className="max-w-6xl mx-auto px-6">
-            <SectionReveal className="text-center mb-24">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Features & Customization</h2>
-              <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed">
-                Luxury by design
+            <SectionReveal className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Features & Customization</h2>
+              <p className="text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed">
+                Luxury. By Design.
               </p>
             </SectionReveal>
 
-            <div className="grid md:grid-cols-3 gap-12 mb-16">
+            <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
               <div>
-                <h3 className="text-2xl font-light mb-6 text-black">Luxury by design</h3>
-                <ul className="space-y-4 text-black/70 font-light">
+                <h3 className="text-2xl font-light mb-6 text-white">Luxury</h3>
+                <ul className="space-y-4 text-white/70 font-light">
                   <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
-                    <span><CountUp end={30} suffix="'" /> x <CountUp end={40} suffix="'" /> units with <CountUp end={25} suffix=" ft." /> soaring ceilings </span>
+                    <span className="text-white/60 mt-1">•</span>
+                    <span>30' x 40' units with 25 ft. soaring ceilings </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
+                    <span className="text-white/60 mt-1">•</span>
                     <span>Optional mezzanines for lounges, offices, or display</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
+                    <span className="text-white/60 mt-1">•</span>
                     <span>Designer finishes: epoxy floors, premium LED lighting</span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-2xl font-light mb-6 text-black">Security & access</h3>
-                <ul className="space-y-4 text-black/70 font-light">
+                <h3 className="text-2xl font-light mb-6 text-white">Design</h3>
+                <ul className="space-y-4 text-white/70 font-light">
                   <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
-                    <span>Gated entry and video surveillance</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
-                    <span>Secure access control and alarm-ready infrastructure</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
-                    <span>Heavy-duty garage doors plus private entry</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-light mb-6 text-black">Build it your way</h3>
-                <ul className="space-y-4 text-black/70 font-light">
-                  <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
+                    <span className="text-white/60 mt-1">•</span>
                     <span>Climate control options</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
+                    <span className="text-white/60 mt-1">•</span>
                     <span>Lifts, custom cabinets, entertainment setups</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-black/60 mt-1">•</span>
+                    <span className="text-white/60 mt-1">•</span>
                     <span>Complimentary consultation with our architect & designer</span>
                   </li>
                 </ul>
@@ -760,120 +738,9 @@ export default function Garage30A() {
           </div>
         </section>
 
-        {/* Ownership Benefits Section */}
-        <section id="ownership" className="py-32 bg-black pattern-dots-dark">
-          <div className="max-w-6xl mx-auto px-6">
-            <SectionReveal className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Ownership Benefits</h2>
-              <p className="text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
-                Own your space. Join the community.
-              </p>
-              <p className="text-lg text-white/70 max-w-4xl mx-auto font-light leading-relaxed">
-                24/7 access, equity growth, and a thriving network of car lovers. Customize now, enjoy forever, and resell like any other real estate when you're ready.
-              </p>
-            </SectionReveal>
-
-            <div className="grid md:grid-cols-3 gap-12">
-              <div className="text-center p-8 rounded-3xl bg-white/10 border border-white/20">
-                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-white/20 rounded-full">
-                  <svg className="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-light mb-4 text-white">24/7 Access</h3>
-                <p className="text-white/70 font-light">Secure, convenient access whenever you need it</p>
-              </div>
-
-              <div className="text-center p-8 rounded-3xl bg-white/10 border border-white/20">
-                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-white/20 rounded-full">
-                  <svg className="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-light mb-4 text-white">Equity Growth</h3>
-                <p className="text-white/70 font-light">Real estate ownership with potential appreciation</p>
-              </div>
-
-              <div className="text-center p-8 rounded-3xl bg-white/10 border border-white/20">
-                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-white/20 rounded-full">
-                  <svg className="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-light mb-4 text-white">Thriving Network</h3>
-                <p className="text-white/70 font-light">Connect with fellow car enthusiasts and collectors</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Amenities Section */}
-        <section className="py-32 bg-white pattern-dots">
-          <div className="max-w-6xl mx-auto px-6">
-            <SectionReveal className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-thin mb-4 text-black">Amenities</h2>
-              <p className="text-lg md:text-xl font-light text-black/70">Exclusive Perks for Garage 30A Owners</p>
-            </SectionReveal>
-
-            <div ref={amenitiesRef} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {/* Access to Premier Events */}
-              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src="/images/golf.png"
-                    alt="Premier Events"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
-                  <h3 className="text-xl font-light mb-3 text-white">Access to Premier Events</h3>
-                  <p className="text-white/80 font-light text-sm leading-relaxed">Private access to elite automotive and sporting events—from track days to VIP suite.</p>
-                </div>
-              </div>
-
-              {/* Private Jet Charter */}
-              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src="/images/plane.jpg"
-                    alt="Private Jet"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
-                  <h3 className="text-xl font-light mb-3 text-white">Private Jet Charter</h3>
-                  <p className="text-white/80 font-light text-sm leading-relaxed">Exclusive charter partnerships for members, with preferred rates and flexible scheduling.</p>
-                </div>
-              </div>
-
-              {/* Members-Only App */}
-              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src="/images/app.jpg"
-                    alt="Mobile App"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
-                  <h3 className="text-xl font-light mb-3 text-white">Members-Only App</h3>
-                  <p className="text-white/80 font-light text-sm leading-relaxed">Manage your unit, book experiences, and connect with fellow owners—all in one place.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Gallery Section */}
-        <section className="py-32 bg-black pattern-diagonal">
+        <section className="pt-0 pb-32 bg-black">
           <div className="max-w-6xl mx-auto px-6">
-            <SectionReveal className="text-center mb-24">
-              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Spaces Designed to Impress</h2>
-            </SectionReveal>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <TiltImage
                 src="/images/image2.jpg"
@@ -909,12 +776,119 @@ export default function Garage30A() {
           </div>
         </section>
 
+        {/* Ownership Benefits Section */}
+        <section id="ownership" className="py-32 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <SectionReveal className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">Ownership Benefits</h2>
+              <p className="text-2xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">
+                Own your space. Join the community.
+              </p>
+              <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed">
+                24/7 access, equity growth, and a thriving network of car lovers. Customize now, enjoy forever, and resell like any other real estate when you're ready.
+              </p>
+            </SectionReveal>
+
+            <div className="grid md:grid-cols-3 gap-12">
+              <div className="text-center p-8 rounded-3xl bg-black border border-white/20">
+                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-white/20 rounded-full">
+                  <svg className="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-light mb-4 text-white">24/7 Access</h3>
+                <p className="text-white/70 font-light">Secure, convenient access whenever you need it</p>
+              </div>
+
+              <div className="text-center p-8 rounded-3xl bg-black border border-white/20">
+                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-white/20 rounded-full">
+                  <svg className="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-light mb-4 text-white">Equity Growth</h3>
+                <p className="text-white/70 font-light">Real estate ownership with potential appreciation</p>
+              </div>
+
+              <div className="text-center p-8 rounded-3xl bg-black border border-white/20">
+                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-white/20 rounded-full">
+                  <svg className="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-light mb-4 text-white">Thriving Network</h3>
+                <p className="text-white/70 font-light">Connect with fellow car enthusiasts and collectors</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Amenities Section */}
+        <section className="py-32 bg-black">
+          <div className="max-w-6xl mx-auto px-6">
+            <SectionReveal className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-thin mb-4 text-white">Amenities</h2>
+              <p className="text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">Exclusive Perks for Garage 30A Owners.</p>
+            </SectionReveal>
+
+            <div ref={amenitiesRef} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Access to Premier Events */}
+              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/golf.png"
+                    alt="Premier Events"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
+                  <h3 className="text-xl font-light mb-3 text-white">Access to Premier Events</h3>
+                  <p className="text-white/80 font-light text-sm leading-relaxed">Private access to elite automotive and sporting events—from track days to VIP experiences.</p>
+                </div>
+              </div>
+
+              {/* Private Jet Charter */}
+              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/plane.jpg"
+                    alt="Private Jet"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
+                  <h3 className="text-xl font-light mb-3 text-white">Private Jet Charter</h3>
+                  <p className="text-white/80 font-light text-sm leading-relaxed">Exclusive private air travel for members, with preferred rates and flexible scheduling.</p>
+                </div>
+              </div>
+
+              {/* Members-Only App */}
+              <div className="amenity-card bg-gray-900 rounded-3xl overflow-hidden relative flex flex-col">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/app.jpg"
+                    alt="Mobile App"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="px-6 pt-6 pb-8 text-center flex-grow flex flex-col">
+                  <h3 className="text-xl font-light mb-3 text-white">Members-Only App</h3>
+                  <p className="text-white/80 font-light text-sm leading-relaxed">Manage access, book experiences, and connect with fellow owners—all in one place.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
-        <section id="faq" className="py-32 bg-white pattern-grid">
+        <section id="faq" className="py-32 bg-white">
           <div className="max-w-4xl mx-auto px-6">
             <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-black">FAQ</h2>
-              <p className="text-lg text-black/70 font-light">Frequently asked questions</p>
+              <p className="text-2xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-4">Frequently Asked Questions</p>
             </SectionReveal>
 
             <div className="bg-black rounded-3xl p-8 md:p-12">
@@ -926,7 +900,7 @@ export default function Garage30A() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-32 bg-black pattern-dots-dark">
+        <section id="contact" className="py-32 bg-black">
           <div className="max-w-4xl mx-auto px-6">
             <SectionReveal className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-thin mb-8 text-white">Now Accepting Limited Reservations</h2>
@@ -1045,7 +1019,7 @@ export default function Garage30A() {
               <div>
                 <h4 className="font-light mb-6 text-white">Quick Links</h4>
                 <ul className="space-y-3 text-white/60">
-                  <li><a href="#vision" className="hover:text-white transition-colors font-light">The Vision</a></li>
+                  <li><a href="#vision" className="hover:text-white transition-colors font-light">About</a></li>
                   <li><a href="#ownership" className="hover:text-white transition-colors font-light">Ownership</a></li>
                   <li><a href="#location" className="hover:text-white transition-colors font-light">Location</a></li>
                   <li><a href="#faq" className="hover:text-white transition-colors font-light">FAQ</a></li>
