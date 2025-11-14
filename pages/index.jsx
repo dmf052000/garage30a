@@ -821,7 +821,7 @@ export default function Garage30A() {
                 Own your space. Join the community.
               </p>
               <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed">
-                24/7 access, equity growth, and a thriving network of car lovers. Customize now, enjoy forever, and resell like any other real estate investment.
+                24/7 access and a thriving network of car lovers. Customize now, enjoy forever, and resell their unit later on.
               </p>
             </SectionReveal>
 
