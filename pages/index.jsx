@@ -78,7 +78,7 @@ const FAQ_DATA = [
   },
   {
     question: 'How secure are Garage 30A units?',
-    answer: 'Our facilities are equipped with state-of-the-art gate system and features, including video surveillance, secure access, and alarm systems for enhanced loss prevention.'
+    answer: 'Our facilities are equipped with state-of-the-art gate system and features, including video surveillance, monitored access, and alarm systems for enhanced loss prevention.'
   },
   {
     question: 'What upgrades are available?',
@@ -106,7 +106,7 @@ const FAQ_DATA = [
   },
   {
     question: 'HOA (Homeowners Association) Fees',
-    answer: 'These fees are used to maintain common areas and provide services such as security and landscaping. The exact amount can vary based on the size and customization of your unit. Generally, the fees help cover the costs of maintaining the clubhouse, security services, and other shared amenities.'
+    answer: 'These fees are used to maintain common areas and provide services such as loss prevention and landscaping. The exact amount can vary based on the size and customization of your unit. Generally, the fees help cover the costs of maintaining the clubhouse, loss prevention services, and other shared amenities.'
   },
   {
     question: 'How do I get more information about garage 30A?',
@@ -382,7 +382,7 @@ export default function Garage30A() {
     <>
       <Head>
         <title>Garage 30A — Luxury Car Condominiums on Florida's 30A</title>
-        <meta name="description" content="Luxury car condominiums for collectors and adventurers on Florida's scenic 30A. Individually owned garage condos with deeded ownership, members-only clubhouse, and 24/7 secure access. Pricing from the mid-$500Ks." />
+        <meta name="description" content="Luxury car condominiums for collectors and adventurers on Florida's scenic 30A. Individually owned garage condos with deeded ownership, members-only clubhouse, and 24/7 access. Pricing from the mid-$500Ks." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" content="luxury garage, car condominiums, 30A, Florida, car storage, garage condo, Santa Rosa Beach, Grayton Beach" />
         <link rel="canonical" href="https://garage30a.verve.app" />
@@ -547,11 +547,11 @@ export default function Garage30A() {
           <div className="absolute inset-0 w-full h-full">
             <div className="absolute inset-0 w-full h-full overflow-hidden">
               <div style={{padding: '56.25% 0 0 0', position: 'relative'}}>
-                <iframe 
-                  src="https://player.vimeo.com/video/1123270710?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
-                  frameBorder="0" 
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                  referrerPolicy="strict-origin-when-cross-origin" 
+                <iframe
+                  src="https://player.vimeo.com/video/1123270710?background=1&autoplay=1&loop=1&muted=1"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   style={{
                     position: 'absolute',
                     top: 0,
@@ -820,9 +820,6 @@ export default function Garage30A() {
               <p className="text-xl text-black/80 max-w-4xl mx-auto font-light leading-relaxed mb-8">
                 Own your space. Join the community.
               </p>
-              <p className="text-lg text-black/70 max-w-4xl mx-auto font-light leading-relaxed">
-                24/7 access and a thriving network of car lovers. Customize now, enjoy forever, and resell their unit later on.
-              </p>
             </SectionReveal>
 
             <div className="grid md:grid-cols-3 gap-12">
@@ -1034,29 +1031,12 @@ export default function Garage30A() {
         <footer className="border-t border-white/10 py-16 bg-black">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-4 gap-12 mb-16">
-              <div className="md:col-span-2">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <Image 
-                      src="/logo.svg" 
-                      alt="Garage 30A" 
-                      width={32} 
-                      height={32}
-                      className="object-contain"
-                    />
-                  </div>
-                  <span className="text-xl font-light tracking-wider">GARAGE 30A</span>
-                </div>
-                <p className="text-white/60 mb-8 max-w-md font-light leading-relaxed">
-                  5283 Hwy 98 E, Santa Rosa Beach, Florida 32459
-                </p>
-                <div className="flex space-x-4">
-                  <a href="#" className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300" aria-label="Instagram">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                  </a>
-                </div>
+              <div>
+                <h4 className="font-light mb-6 text-white">Address</h4>
+                <ul className="space-y-3 text-white/60">
+                  <li className="font-light">5283 Hwy 98 E</li>
+                  <li className="font-light">Santa Rosa Beach, FL 32459</li>
+                </ul>
               </div>
               <div>
                 <h4 className="font-light mb-6 text-white">Quick Links</h4>
@@ -1088,8 +1068,9 @@ export default function Garage30A() {
             <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/40">
               <p className="font-light">&copy; 2024 Garage 30A. All rights reserved.</p>
               <div className="flex space-x-8 mt-4 md:mt-0">
-                <a href="#" className="hover:text-white transition-colors font-light">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition-colors font-light">Terms of Service</a>
+                <a href="/privacy-policy" className="hover:text-white transition-colors font-light">Privacy Policy</a>
+                <a href="/disclosures" className="hover:text-white transition-colors font-light">Disclosures</a>
+                <a href="/terms-of-service" className="hover:text-white transition-colors font-light">Terms of Service</a>
               </div>
             </div>
           </div>
